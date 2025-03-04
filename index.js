@@ -9,12 +9,10 @@ const { verificarToken } = require("./middlewares");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middlewares
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 
-// Routes
 app.post("/usuarios", async (req, res) => {
     try {
         const { email, password, rol, lenguaje } = req.body;
@@ -51,7 +49,6 @@ app.get("/usuarios", verificarToken, async (req, res) => {
     }
 });
 
-// Start server
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
